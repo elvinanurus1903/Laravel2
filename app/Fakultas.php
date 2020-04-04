@@ -9,4 +9,9 @@ class Fakultas extends Model
     protected $table = 'fakultas';
 
     protected $fillable = ['name'];
+
+     public function jurusan()
+    {
+    	return $this->belongsTo(Jurusan::class, 'fakultas_id', 'id');
+    }
 }

@@ -4,7 +4,7 @@
 <section class="section">
   
   <div class="section-header">
-    <h1>Fakultas</h1>
+    <h1>Jurusan</h1>
   </div>
 
   <div class="section-body">
@@ -19,12 +19,12 @@
                 <button type="submit" class="btn btn-primary">Search</button>
               </div>
             </form>
-            <a href="{{ route('fakultas.index') }}" class="pull-right">
+            <a href="{{ route('jurusan.index') }}" class="pull-right">
               <button type="button" class="btn btn-info">All Data</button>
             </a>
           </div>
           <div class="card-header">
-            <a href="{{ route('fakultas.create') }}">
+            <a href="{{ route('jurusan.create') }}">
               <button type="button" class="btn btn-primary">Add New</button>
             </a>
           </div>
@@ -34,22 +34,26 @@
                 <tr>
                   <th scope="col">#</th>
                   <th scope="col">Name</th>
+                  <th scope="col">Fakultas</th>
                   <th scope="col">Action</th>
                 </tr>
               </thead>
               <tbody>
-               @forelse($data as $fakultas)
+               @forelse($data as $jurusan)
                 <tr>
                   <td></td>
-                  <td>{{ $fakultas->name }}</td>
+                  <td>{{ $jurusan->name }}</td>
+                  <td>{{ $jurusan->fakultas->name }}</td>
                   <td>
-                    <a href="{{ route('fakultas.edit', ['id' => $fakultas->id]) }}" class="pull-right">
-              <button type="button" class="btn btn-warning">Edit</button> |
-               <a href="{{ route('fakultas.delete', ['id' => $fakultas->id]) }}"
+                    <a href="{{ route('jurusan.edit', ['id' => $jurusan->id]) }}">
+                      <button type="button" class="btn btn-sm btn-info">Edit</button>
+                    </a>
+                   <a href="{{ route('jurusan.delete', ['id' => $jurusan->id]) }}"
                     onclick="return confirm('Delete data?');" 
                     >
                       <button type="button" class="btn btn-sm btn-danger">Hapus</button>
-                    </a></td>
+                    </a>
+                   </td>
                 </tr>
                @empty
                 <tr>
@@ -68,5 +72,6 @@
         </div>
       </div>  
   </div>
+
 </section>
 @endsection()
