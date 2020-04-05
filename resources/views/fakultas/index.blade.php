@@ -32,7 +32,7 @@
             <table class="table table-bordered">
               <thead>
                 <tr>
-                  <th scope="col">#</th>
+                  <th scope="col">ID</th>
                   <th scope="col">Name</th>
                   <th scope="col">Action</th>
                 </tr>
@@ -40,7 +40,7 @@
               <tbody>
                @forelse($data as $fakultas)
                 <tr>
-                  <td></td>
+                  <td>{{ $fakultas->id_fakultas }}</td>
                   <td>{{ $fakultas->nama_fakultas }}</td>
                   <td>
                     <a href="{{route('fakultas.edit', $fakultas->id_fakultas)}}">
