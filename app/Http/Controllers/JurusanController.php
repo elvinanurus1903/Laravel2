@@ -15,8 +15,9 @@ class JurusanController extends Controller
     public function index(Request $request)
     {
        $data = Jurusan::when($request->search, function($query) use($request){
-            $query->where('name', 'LIKE', '%'.$request->search);
-        })->orderBy('id', 'asc')->paginate(2);
+            $query->where('name', 'LIKE', '%'.$request->search.'%')
+             ->orWhere('nama_fakultas', 'LIKE', '%'.$request->search.'%');
+        })->join('fakultas', 'id_fakultas', '=', 'jurusan.fakultas_id')->orderBy('id', 'asc')->paginate(2);
 
         return view('jurusan.index', compact('data'));
     }

@@ -15,9 +15,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('fakultas', ['as' => 'fakultas.index', 'uses' => 'FakultasController@index']);
 Route::get('fakultas/create', ['as' => 'fakultas.create', 'uses' => 'FakultasController@create']);
 Route::post('fakultas/store', ['as' => 'fakultas.store', 'uses' => 'FakultasController@store']);
-Route::get('fakultas/edit/{id}', ['as' => 'fakultas.edit', 'uses' => 'FakultasController@edit']);
-Route::post('fakultas/update/{id}', ['as' => 'fakultas.update', 'uses' => 'FakultasController@update']);
-Route::get('fakultas/delete/{id}', ['as' => 'fakultas.delete', 'uses' => 'FakultasController@delete']);
+Route::get('fakultas/edit/{id_fakultas}', ['as' => 'fakultas.edit', 'uses' => 'FakultasController@edit']);
+Route::put('fakultas/update/{id_fakultas}', ['as' => 'fakultas.update', 'uses' => 'FakultasController@update']);
+Route::get('fakultas/delete/{id_fakultas}', ['as' => 'fakultas.delete', 'uses' => 'FakultasController@delete']);
 
 
 Route::get('jurusan', ['as' => 'jurusan.index', 'uses' => 'JurusanController@index']);

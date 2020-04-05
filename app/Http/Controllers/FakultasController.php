@@ -16,9 +16,9 @@ class FakultasController extends Controller
     {
         //pagination
         // numbering
-        $data = Fakultas::when($request->search, function($query) use($request){
-            $query->where('name', 'LIKE', '%'.$request->search);
-        })->orderBy('id', 'asc')->paginate(2);
+      $data = Fakultas::when($request->search, function($query) use($request){
+            $query->where('nama_fakultas', 'LIKE', '%'.$request->search.'%');
+        })->orderBy('id_fakultas', 'asc')->paginate(2);
 
         return view('fakultas.index', compact('data'));
     }
@@ -41,7 +41,7 @@ class FakultasController extends Controller
      */
     public function store(Request $request)
     {
-        Fakultas::create(['name' => $request->name]);
+        Fakultas::create(['nama_fakultas' => $request->nama_fakultas]);
 
         return redirect()->route('fakultas.index');
     }
@@ -63,9 +63,9 @@ class FakultasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id_fakultas)
     {
-        $data = Fakultas::find($id);
+        $data = Fakultas::find($id_fakultas);
 
 
         return view('fakultas.edit', compact('data'));
@@ -78,11 +78,16 @@ class FakultasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $id_fakultas)
     {
-        Fakultas::whereId($id)->update(['name' => $request->name]);
+          $request->validate([
+                 'nama_fakultas'     =>  'required'
+            ]);
 
-         return redirect()->route('fakultas.index');
+       $data = Fakultas::find($id_fakultas);
+       $data->nama_fakultas = $request->input('nama_fakultas');
+       $data->save();
+       return redirect()->route('fakultas.index');
     }
     
 
@@ -92,9 +97,10 @@ class FakultasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function delete($id)
+    public function delete($id_fakultas)
     {
-        Fakultas::whereId($id)->delete();
+        $data = Fakultas::findOrFail($id_fakultas);
+        $data->delete();
 
         return redirect()->route('fakultas.index');
     }

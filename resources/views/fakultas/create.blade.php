@@ -5,7 +5,7 @@
        @csrf
            <div class="form-group">
             <label>Fakultas</label>
-             <input type="text" name="name" class="form-control input-lg" />
+             <input type="text" name="nama_fakultas" class="form-control input-lg" />
             </div>
             <div class="form-group">
                <input type="submit" name="add" class="btn btn-primary" value="Add" />

@@ -11,8 +11,8 @@
              <label >Fakultas</label>
                 <select class="form-control input-lg" id="genre" name="fakultas_id">
                     @foreach( $data as $fakultas)
-                            <option value="{{$fakultas->id }}">
-                                  {{ $fakultas->name }}
+                            <option value="{{$fakultas->id_fakultas }}">
+                                  {{ $fakultas->nama_fakultas }}
                             </option>
                     @endforeach
                 </select>

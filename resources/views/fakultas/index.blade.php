@@ -41,11 +41,11 @@
                @forelse($data as $fakultas)
                 <tr>
                   <td></td>
-                  <td>{{ $fakultas->name }}</td>
+                  <td>{{ $fakultas->nama_fakultas }}</td>
                   <td>
-                    <a href="{{ route('fakultas.edit', ['id' => $fakultas->id]) }}" class="pull-right">
+                    <a href="{{route('fakultas.edit', $fakultas->id_fakultas)}}">
               <button type="button" class="btn btn-warning">Edit</button> |
-               <a href="{{ route('fakultas.delete', ['id' => $fakultas->id]) }}"
+               <a href="{{ route('fakultas.delete', ['id_fakultas' => $fakultas->id_fakultas]) }}"
                     onclick="return confirm('Delete data?');" 
                     >
                       <button type="button" class="btn btn-sm btn-danger">Hapus</button>

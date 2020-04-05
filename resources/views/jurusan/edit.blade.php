@@ -11,9 +11,9 @@
         </div>
         <div class="form-group">
           <label>Fakultas</label>
-         <select class="form-control" name="fakultas_id">
+        <select class="form-control" name="fakultas_id">
                           @foreach( $fakultas as $fakultas)
-                              <option value="{{ $fakultas->id }}" {{ $fakultas->name == $fakultas->id ? 'selected="selected"' : '' }}> {{ $fakultas->name}} </option>
+                              <option value="{{ $fakultas->id_fakultas }}" {{ $fakultas->id_fakultas == $jurusan->fakultas_id ? 'selected="selected"' : '' }}> {{ $fakultas->nama_fakultas}} </option>
                           @endforeach
           </select></div>
         <div class="form-group ">
