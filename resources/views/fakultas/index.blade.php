@@ -1,5 +1,5 @@
 @extends('layouts.adminmain')
-
+@section('title', 'Fakultas')
 @section('content')
 <section class="section">
   
@@ -33,7 +33,7 @@
               <thead>
                 <tr>
                   <th scope="col">ID</th>
-                  <th scope="col">Name</th>
+                  <th scope="col">Fakultas</th>
                   <th scope="col">Action</th>
                 </tr>
               </thead>
@@ -44,7 +44,7 @@
                   <td>{{ $fakultas->nama_fakultas }}</td>
                   <td>
                     <a href="{{route('fakultas.edit', $fakultas->id_fakultas)}}">
-              <button type="button" class="btn btn-warning">Edit</button> |
+              <button type="button" class="btn btn-sm btn-warning">Edit</button> |
                <a href="{{ route('fakultas.delete', ['id_fakultas' => $fakultas->id_fakultas]) }}"
                     onclick="return confirm('Delete data?');" 
                     >

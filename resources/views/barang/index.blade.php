@@ -1,10 +1,10 @@
 @extends('layouts.adminmain')
-@section('title', 'Jurusan')
+@section('title', 'Data Barang')
 @section('content')
 <section class="section">
   
   <div class="section-header">
-    <h1>Jurusan</h1>
+    <h1>Barang</h1>
   </div>
 
   <div class="section-body">
@@ -19,41 +19,48 @@
                 <button type="submit" class="btn btn-primary">Search</button>
               </div>
             </form>
-            <a href="{{ route('jurusan.index') }}" class="pull-right">
+            <a href="{{ route('fakultas.index') }}" class="pull-right">
               <button type="button" class="btn btn-info">All Data</button>
             </a>
           </div>
+          @if(auth()->user()->role == 'admin')
           <div class="card-header">
-            <a href="{{ route('jurusan.create') }}">
+            <a href="{{ route('barang.create') }}">
               <button type="button" class="btn btn-primary">Add New</button>
             </a>
           </div>
+          @endif
           <div class="card-body">
             <table class="table table-bordered">
               <thead>
                 <tr>
-                  <th scope="col">No</th>
-                  <th scope="col">Jurusan</th>
-                  <th scope="col">Fakultas</th>
+                  <th scope="col">ID</th>
+                  <th scope="col">Barang</th>
+                  <th scope="col">Ruangan</th>
+                  <th scope="col">Total</th>
+                  <th scope="col">Rusak</th>
                   <th scope="col">Action</th>
                 </tr>
               </thead>
               <tbody>
-               @forelse($data as $jurusan)
+               @forelse($data as $barang)
                 <tr>
-                  <td>{{ $jurusan->id }}</td>
-                  <td>{{ $jurusan->name }}</td>
-                  <td>{{ $jurusan->fakultas->nama_fakultas }}</td>
+                  <td>{{ $barang->id_barang }}</td>
+                  <td>{{ $barang->nama_barang }}</td>
+                  <td>{{ $barang->ruangan->nama_ruangan }}</td>
+                  <td>{{ $barang->total }}</td>
+                  <td>{{ $barang->broken }}</td>
                   <td>
-                    <a href="{{ route('jurusan.edit', ['id' => $jurusan->id]) }}">
-                      <button type="button" class="btn btn-sm btn-warning">Edit</button>
-                    </a>
-                   <a href="{{ route('jurusan.delete', ['id' => $jurusan->id]) }}"
+                    <a href="{{ route('barang.edit', ['id_barang' => $barang->id_barang]) }}">
+              <button type="button" class="btn btn-sm btn-warning">Edit</button> |
+              @if(auth()->user()->role == 'admin')
+               <a href="{{ route('barang.delete', ['id_barang' => $barang->id_barang]) }}"
                     onclick="return confirm('Delete data?');" 
                     >
                       <button type="button" class="btn btn-sm btn-danger">Hapus</button>
                     </a>
-                   </td>
+                  @endif
+                  </td>
                 </tr>
                @empty
                 <tr>
@@ -72,6 +79,5 @@
         </div>
       </div>  
   </div>
-
 </section>
 @endsection()

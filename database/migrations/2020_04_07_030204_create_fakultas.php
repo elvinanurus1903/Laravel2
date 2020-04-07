@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateJurusan extends Migration
+class CreateFakultas extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,10 @@ class CreateJurusan extends Migration
      */
     public function up()
     {
-         Schema::create('jurusan', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->unsignedInteger('fakultas_id')->index();
-            $table->string('name', 50);
+         Schema::create('fakultas', function (Blueprint $table) {
+            $table->bigIncrements('id_fakultas');
+            $table->string('nama_fakultas', 50);
             $table->timestamps();
-
-            //$table->foreign('fakultas_id')->references('id')->on('fakultas')->onDelete('cascade');
         });
     }
 
@@ -30,6 +27,6 @@ class CreateJurusan extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('jurusan');
+        Schema::dropIfExists('fakultas');
     }
 }

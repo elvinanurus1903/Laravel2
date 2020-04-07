@@ -1,10 +1,10 @@
 @extends('layouts.adminmain')
-@section('title', 'Jurusan')
+@section('title', 'Ruangan')
 @section('content')
 <section class="section">
   
   <div class="section-header">
-    <h1>Jurusan</h1>
+    <h1>Ruangan</h1>
   </div>
 
   <div class="section-body">
@@ -19,12 +19,12 @@
                 <button type="submit" class="btn btn-primary">Search</button>
               </div>
             </form>
-            <a href="{{ route('jurusan.index') }}" class="pull-right">
+            <a href="{{ route('ruangan.index') }}" class="pull-right">
               <button type="button" class="btn btn-info">All Data</button>
             </a>
           </div>
           <div class="card-header">
-            <a href="{{ route('jurusan.create') }}">
+            <a href="{{ route('ruangan.create') }}">
               <button type="button" class="btn btn-primary">Add New</button>
             </a>
           </div>
@@ -33,22 +33,22 @@
               <thead>
                 <tr>
                   <th scope="col">No</th>
+                  <th scope="col">Ruangan</th>
                   <th scope="col">Jurusan</th>
-                  <th scope="col">Fakultas</th>
                   <th scope="col">Action</th>
                 </tr>
               </thead>
               <tbody>
-               @forelse($data as $jurusan)
+               @forelse($data as $ruangan)
                 <tr>
-                  <td>{{ $jurusan->id }}</td>
-                  <td>{{ $jurusan->name }}</td>
-                  <td>{{ $jurusan->fakultas->nama_fakultas }}</td>
+                  <td>{{ $ruangan->id }}</td>
+                  <td>{{ $ruangan->nama_ruangan }}</td>
+                  <td>{{ $ruangan->jurusan->name }}</td>
                   <td>
-                    <a href="{{ route('jurusan.edit', ['id' => $jurusan->id]) }}">
+                    <a href="{{ route('ruangan.edit', ['id_ruangan' => $ruangan->id_ruangan]) }}">
                       <button type="button" class="btn btn-sm btn-warning">Edit</button>
                     </a>
-                   <a href="{{ route('jurusan.delete', ['id' => $jurusan->id]) }}"
+                   <a href="{{ route('ruangan.delete', ['id_ruangan' => $ruangan->id_ruangan]) }}"
                     onclick="return confirm('Delete data?');" 
                     >
                       <button type="button" class="btn btn-sm btn-danger">Hapus</button>
