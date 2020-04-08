@@ -19,16 +19,28 @@
                 <button type="submit" class="btn btn-primary">Search</button>
               </div>
             </form>
-            <a href="{{ route('fakultas.index') }}" class="pull-right">
+            <a href="{{ route('barang.index') }}" class="pull-right">
               <button type="button" class="btn btn-info">All Data</button>
             </a>
           </div>
           @if(auth()->user()->role == 'admin')
+          <table>
+            <tr>
+              <td width="900">
           <div class="card-header">
+            <div class="form-group">
             <a href="{{ route('barang.create') }}">
               <button type="button" class="btn btn-primary">Add New</button>
             </a>
-          </div>
+          </div></div></td>
+          <td>
+          <div class="card-header">
+               <a href="cetak/cetak_pdf" class="btn btn-dark" target="_blank"> PDF </a>
+               
+            <a href="cetak/export_excel" class="btn btn-success my-3" target="_blank">EXCEL</a>
+            </a>
+  </div></td></tr>
+        </table>
           @endif
           <div class="card-body">
             <table class="table table-bordered">

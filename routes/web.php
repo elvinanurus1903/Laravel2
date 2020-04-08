@@ -46,10 +46,12 @@ Route::get('ruangan/delete/{id_ruangan}', ['as' => 'ruangan.delete', 'uses' => '
 //Untuk Barang
 Route::get('barang', ['as' => 'barang.index', 'uses' => 'BarangController@index']);
 Route::get('barang/create', ['as' => 'barang.create', 'uses' => 'BarangController@create'])->Middleware('staff.only');
-Route::post('barang/store', ['as' => 'barang.store', 'uses' => 'BarangController@store']);
+Route::post('barang/store', ['as' => 'barang.store', 'uses' => 'BarangController@store'])->Middleware('staff.only');
 Route::get('barang/edit/{id_barang}', ['as' => 'barang.edit', 'uses' => 'BarangController@edit']);
 Route::put('barang/update/{id_barang}', ['as' => 'barang.update', 'uses' => 'BarangController@update']);
 Route::get('barang/delete/{id_barang}', ['as' => 'barang.delete', 'uses' => 'BarangController@delete'])->Middleware('staff.only');
+Route::get('cetak/cetak_pdf', 'CetakController@cetak_pdf')->Middleware('staff.only');
+Route::get('cetak/export_excel', 'CetakController@export_excel')->Middleware('staff.only');
 });
 
 Route::get('dashboard', function () {
