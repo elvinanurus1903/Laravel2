@@ -51,8 +51,8 @@
                   <th scope="col">Ruangan</th>
                   <th scope="col">Total</th>
                   <th scope="col">Rusak</th>
-                  <th scope="col">Created By</th>
-                  <th scope="col">Updated By</th>
+                  <th scope="col">Dibuat Oleh</th>
+                  <th scope="col">Diubah Oleh</th>
                   <th scope="col">Action</th>
                 </tr>
               </thead>
@@ -88,8 +88,7 @@
             {!! $data->appends(request()->except('page'))->render() !!}
           </div>
           <div class="card-footer text-right">
-            <nav class="d-inline-block">
-              
+            <nav class="d-inline-block">   
             </nav>
           </div>
         </div>

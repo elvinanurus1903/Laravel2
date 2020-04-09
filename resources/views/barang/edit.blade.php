@@ -44,11 +44,11 @@
                 <input type="text" name="broken" class="form-control" value="{{ $barang->broken }}">
               </div>
                 <div class="form-group">
-            <label>Created By</label>
+            <label>Dibuat Oleh</label>
              <input type="text" name="created_by" readonly value="{{ auth()->user()->id }}" class="form-control input-lg" />
             </div>
             <div class="form-group">
-            <label>Updated By</label>
+            <label>Diubah Oleh</label>
              <input type="text" name="updated_by" readonly value="{{ auth()->user()->id }}" class="form-control input-lg" />
             </div>
               <div class="form-group">
@@ -59,6 +59,5 @@
         </div>
       </div>  
   </div>
-
 </section>
 @endsection()

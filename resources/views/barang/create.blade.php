@@ -1,12 +1,10 @@
 @extends('layouts.adminmain')
 @section('title', 'Tambah Data Barang')
 @section('content')
-<section class="section">
-  
+<section class="section">  
   <div class="section-header">
     <h1>Barang <small>Add Data</small></h1>
   </div>
-
   <div class="section-body">
     <div class="col-12 col-md-6 col-lg-6">
         <div class="card">
@@ -43,11 +41,11 @@
              <input type="text" name="broken" class="form-control input-lg" />
             </div>
              <div class="form-group">
-            <label>Created By</label>
+            <label>Dibuat Oleh</label>
              <input type="text" readonly name="created_by" value="{{ auth()->user()->id }}" class="form-control input-lg" />
             </div>
             <div class="form-group">
-            <label>Updated By</label>
+            <label>Diubah Oleh</label>
              <input type="text" readonly name="updated_by" value="{{ auth()->user()->id }}" class="form-control input-lg" />
             </div>
             <div class="form-group">

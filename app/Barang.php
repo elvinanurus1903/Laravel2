@@ -3,7 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-
+//created_by & updated_by
 class Barang extends Model
 {
        	protected  $table = 'barang';

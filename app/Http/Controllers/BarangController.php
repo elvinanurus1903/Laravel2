@@ -14,6 +14,7 @@ class BarangController extends Controller
      */
    public function index(Request $request)
     {
+        //created_by & updated_by
         $data = Barang::when($request->search, function($query) use($request){
             $query->where('nama_barang', 'LIKE', '%'.$request->search.'%')
              ->orWhere('nama_ruangan', 'LIKE', '%'.$request->search.'%')
