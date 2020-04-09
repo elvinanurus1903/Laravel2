@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Barang;
 use App\Ruangan;
-use App\Jurusan;
+use App\User;
  
 use PDF;
  
@@ -18,9 +18,9 @@ class CetakController extends Controller
     {
     	$barang = Barang::all();
     	$ruangan = Ruangan::all();
-    	$jurusan = Jurusan::all();
+    	$user = User::all();
  
-    	$pdf = PDF::loadview('barang.data_pdf',['barang'=>$barang,'ruangan' => $ruangan, 'jurusan' => $jurusan]);
+    	$pdf = PDF::loadview('barang.data_pdf',['barang'=>$barang,'ruangan' => $ruangan, 'user' => $user]);
     	return $pdf->download('Data_barang_PDF');
     }
 

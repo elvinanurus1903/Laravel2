@@ -6,8 +6,8 @@
                 <th>Ruangan</th>
                 <th>Total</th>
                 <th>Rusak</th>
-                <th>Tanggal Masuk</th>
-                <th>Tanggal Edit</th>
+                <th>Dibuat Oleh</th>
+                <th>Diedit Oleh</th>
         </tr>
     </thead>
    <tbody>
@@ -18,8 +18,8 @@
                 <td>{{$b->ruangan->nama_ruangan}}</td>
                 <td>{{$b->total}}</td>
                 <td>{{$b->broken}}</td>
-                <td>{{$b->created_at}}</td>
-                <td>{{$b->updated_at}}</td>
+                <td>{{$b->created_updated->name}}</td>
+                <td>{{$b->updated_created->name}}</td>
             </tr>
             @endforeach
         </tbody>
