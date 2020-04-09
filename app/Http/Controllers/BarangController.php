@@ -14,7 +14,6 @@ class BarangController extends Controller
      */
    public function index(Request $request)
     {
-        //created_by & updated_by
         $data = Barang::when($request->search, function($query) use($request){
             $query->where('nama_barang', 'LIKE', '%'.$request->search.'%')
              ->orWhere('nama_ruangan', 'LIKE', '%'.$request->search.'%')
@@ -77,7 +76,7 @@ class BarangController extends Controller
     
     public function edit($id_barang)
     {
-         $ruangan = \App\Ruangan::all();
+        $ruangan = \App\Ruangan::all();
         $barang = Barang::findOrFail($id_barang);
         return view('barang.edit', compact('barang'))->with('ruangan', $ruangan);
     }

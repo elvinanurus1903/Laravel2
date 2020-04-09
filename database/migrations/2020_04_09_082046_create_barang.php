@@ -21,7 +21,7 @@ class CreateBarang extends Migration
            $table->bigInteger('broken');
            $table->unsignedInteger('created_by')->index();
            $table->unsignedInteger('updated_by')->index();
-            $table->timestamps();
+           $table->timestamps();
         });
     }
 

@@ -45,7 +45,7 @@
               </div>
                 <div class="form-group">
             <label>Dibuat Oleh</label>
-             <input type="text" name="created_by" readonly value="{{ auth()->user()->id }}" class="form-control input-lg" />
+             <input type="text" name="created_by" readonly value="{{$barang->created_by}}" class="form-control input-lg" />
             </div>
             <div class="form-group">
             <label>Diubah Oleh</label>
