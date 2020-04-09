@@ -19,7 +19,9 @@ class BarangController extends Controller
              ->orWhere('nama_ruangan', 'LIKE', '%'.$request->search.'%')
              ->orWhere('total', 'LIKE', '%'.$request->search.'%')
              ->orWhere('broken', 'LIKE', '%'.$request->search.'%');
-        })->join('ruangan', 'id_ruangan', '=', 'barang.ruangan_id')->orderBy('id_barang', 'asc')->paginate(2);
+        })->join('ruangan', 'id_ruangan', '=', 'barang.ruangan_id')
+        ->join('users', 'id', '=', 'barang.created_by')
+        ->orderBy('id_barang', 'asc')->paginate(2);
 
         return view('barang.index', compact('data'));
     }
@@ -47,7 +49,9 @@ class BarangController extends Controller
          Barang::create(['nama_barang' => $request->nama_barang,
                 'ruangan_id' => $request->ruangan_id,
                 'total' => $request->total,
-                'broken' => $request->broken,]);
+                'broken' => $request->broken,
+                'created_by' => $request->created_by,
+                'updated_by' => $request->updated_by,]);
 
         return redirect()->route('barang.index');
     }
@@ -91,7 +95,9 @@ class BarangController extends Controller
                  'nama_barang'     =>  'required',
                  'ruangan_id'     =>  'required',
                  'total'     =>  'required',
-                 'broken'     =>  'required'
+                 'broken'     =>  'required',
+                 'created_by'     =>  'required',
+                 'updated_by'     =>  'required',
             ]);
 
        $barang = Barang::find($id_barang);
@@ -99,6 +105,8 @@ class BarangController extends Controller
        $barang->ruangan_id = $request->input('ruangan_id');
        $barang->total = $request->input('total');
        $barang->broken = $request->input('broken');
+        $barang->created_by = $request->input('created_by');
+       $barang->updated_by = $request->input('updated_by');
        $barang->save();
        return redirect()->route('barang.index');
     }

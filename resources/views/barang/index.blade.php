@@ -51,8 +51,8 @@
                   <th scope="col">Ruangan</th>
                   <th scope="col">Total</th>
                   <th scope="col">Rusak</th>
-                  <th scope="col">Tanggal Buat</th>
-                  <th scope="col">Tanggal Update</th>
+                  <th scope="col">Created By</th>
+                  <th scope="col">Updated By</th>
                   <th scope="col">Action</th>
                 </tr>
               </thead>
@@ -64,8 +64,8 @@
                   <td>{{ $barang->ruangan->nama_ruangan }}</td>
                   <td>{{ $barang->total }}</td>
                   <td>{{ $barang->broken }}</td>
-                  <td>{{ $barang->created_at }}</td>
-                  <td>{{ $barang->updated_at }}</td>
+                  <td>{{ $barang->created_updated->name }}</td>
+                  <td>{{ $barang->updated_created->name }}</td>
                   <td>
                     <a href="{{ route('barang.edit', ['id_barang' => $barang->id_barang]) }}">
               <button type="button" class="btn btn-sm btn-warning">Edit</button> |

@@ -42,6 +42,14 @@
             <label>Rusak</label>
              <input type="text" name="broken" class="form-control input-lg" />
             </div>
+             <div class="form-group">
+            <label>Created By</label>
+             <input type="text" readonly name="created_by" value="{{ auth()->user()->id }}" class="form-control input-lg" />
+            </div>
+            <div class="form-group">
+            <label>Updated By</label>
+             <input type="text" readonly name="updated_by" value="{{ auth()->user()->id }}" class="form-control input-lg" />
+            </div>
             <div class="form-group">
                <input type="submit" name="add" class="btn btn-primary" value="Add" />
             </div>

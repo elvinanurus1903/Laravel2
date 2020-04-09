@@ -11,6 +11,8 @@ class User extends Authenticatable
     use Notifiable;
 
     protected $rememberTokenName = false;
+    protected $table = 'users';
+    protected $primaryKey = 'id';
 
     /**
      * The attributes that are mass assignable.
@@ -20,7 +22,10 @@ class User extends Authenticatable
     protected $fillable = [
         'name', 'email', 'password',
     ];
-
+   public function userd_created()
+    {
+        return $this->belongsTo(Barang::class, 'created_by', 'id');
+    }
     /**
      * The attributes that should be hidden for arrays.
      *

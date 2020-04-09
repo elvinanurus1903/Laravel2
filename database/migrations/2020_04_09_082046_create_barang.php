@@ -14,11 +14,13 @@ class CreateBarang extends Migration
     public function up()
     {
         Schema::create('barang', function (Blueprint $table) {
-            $table->bigIncrements('id_barang');
+           $table->bigIncrements('id_barang');
            $table->unsignedInteger('ruangan_id')->index();
            $table->string('nama_barang', 50);
            $table->bigInteger('total');
            $table->bigInteger('broken');
+           $table->unsignedInteger('created_by')->index();
+           $table->unsignedInteger('updated_by')->index();
             $table->timestamps();
         });
     }
