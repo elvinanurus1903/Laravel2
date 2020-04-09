@@ -14,10 +14,14 @@ class CreateRuangan extends Migration
     public function up()
     {
         Schema::create('ruangan', function (Blueprint $table) {
-              $table->bigIncrements('id_ruangan');
-           $table->unsignedInteger('jurusan_id')->index();
-           $table->string('nama_ruagan', 50);
+            $table->bigIncrements('id_ruangan');
+            $table->unsignedBigInteger('jurusan_id');
+            $table->string('nama_ruangan', 50);
             $table->timestamps();
+
+            $table->foreign('jurusan_id')->references('id')->on('jurusan')
+                    ->onDelete('cascade')
+                    ->onUpdate('cascade');
         });
     }
 
