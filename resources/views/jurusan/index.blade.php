@@ -23,11 +23,23 @@
               <button type="button" class="btn btn-info">All Data</button>
             </a>
           </div>
+          <table>
+            <tr>
+              <td width="900">
           <div class="card-header">
+            <div class="form-group">
             <a href="{{ route('jurusan.create') }}">
               <button type="button" class="btn btn-primary">Add New</button>
             </a>
-          </div>
+          </div></div></td>
+          <td>
+           <div class="card-header">
+               <a href="cetak/cetak_pdf_jurusan" class="btn btn-dark" target="_blank"> PDF </a>
+               
+            <a href="cetak/export_excel_jurusan" class="btn btn-success my-3" target="_blank">EXCEL</a>
+            </a>
+              </div></td></tr>
+        </table>
           <div class="card-body">
             <table class="table table-bordered">
               <thead>

@@ -32,6 +32,8 @@ Route::post('jurusan/store', ['as' => 'jurusan.store', 'uses' => 'JurusanControl
 Route::get('jurusan/edit/{id}', ['as' => 'jurusan.edit', 'uses' => 'JurusanController@edit']);
 Route::post('jurusan/update/{id}', ['as' => 'jurusan.update', 'uses' => 'JurusanController@update']);
 Route::get('jurusan/delete/{id}', ['as' => 'jurusan.delete', 'uses' => 'JurusanController@delete']);
+Route::get('cetak/export_excel_jurusan', 'CetakController@export_excel_jurusan');
+Route::get('cetak/cetak_pdf_jurusan', 'CetakController@cetak_pdf_jurusan');
 
 //Untuk Ruangan
 Route::get('ruangan', ['as' => 'ruangan.index', 'uses' => 'RuanganController@index']);
