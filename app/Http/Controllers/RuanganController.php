@@ -17,7 +17,7 @@ class RuanganController extends Controller
         $data = Ruangan::when($request->search, function($query) use($request){
             $query->where('nama_ruangan', 'LIKE', '%'.$request->search.'%')
              ->orWhere('name', 'LIKE', '%'.$request->search.'%');
-        })->join('jurusan', 'id', '=', 'ruangan.jurusan_id')->orderBy('id', 'asc')->paginate(2);
+        })->join('jurusan', 'id', '=', 'ruangan.jurusan_id')->orderBy('id', 'asc')->paginate(5);
 
         return view('ruangan.index', compact('data'));
     }

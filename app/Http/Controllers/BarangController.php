@@ -21,7 +21,7 @@ class BarangController extends Controller
              ->orWhere('broken', 'LIKE', '%'.$request->search.'%');
         })->join('ruangan', 'id_ruangan', '=', 'barang.ruangan_id')
         ->join('users', 'id', '=', 'barang.created_by')
-        ->orderBy('id_barang', 'asc')->paginate(2);
+        ->orderBy('id_barang', 'asc')->paginate(5);
 
         return view('barang.index', compact('data'));
     }

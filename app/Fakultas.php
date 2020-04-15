@@ -13,6 +13,6 @@ class Fakultas extends Model
 
      public function jurusan()
     {
-    	return $this->belongsTo(Jurusan::class, 'fakultas_id', 'id_fakultas');
+    	return $this->hasMany(Jurusan::class, 'fakultas_id', 'id_fakultas');
     }
 }

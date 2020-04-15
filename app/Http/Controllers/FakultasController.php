@@ -18,7 +18,7 @@ class FakultasController extends Controller
         // numbering
       $data = Fakultas::when($request->search, function($query) use($request){
             $query->where('nama_fakultas', 'LIKE', '%'.$request->search.'%');
-        })->orderBy('id_fakultas', 'asc')->paginate(2);
+        })->orderBy('id_fakultas', 'asc')->paginate(5);
 
         return view('fakultas.index', compact('data'));
     }

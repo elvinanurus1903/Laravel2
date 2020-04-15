@@ -12,10 +12,10 @@ class FakultasSeeder extends Seeder
      */
     public function run()
     {
-        $listFakultas = ['Filkom', 'Vokasi', 'Hukum'];
+        $listFakultas = ['Filkom', 'Vokasi', 'Hukum','Ilmu Administrasi', 'Kedokteran', 'Peternakan','Teknik', 'Bahasa Dan Sastra' ];
 
         foreach ($listFakultas as $fakultas) {
-        	Fakultas::create(['name' => $fakultas]);
+        	Fakultas::create(['nama_fakultas' => $fakultas]);
         }
     }
 }
