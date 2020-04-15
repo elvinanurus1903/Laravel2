@@ -14,7 +14,7 @@ class UserSeeder extends Seeder
         $role = ['admin', 'staff' ];
 
          foreach ($role as $role) {
-        	Factory(App\User::class,10)->create(['role' => $role]);
+        	Factory(App\User::class,5)->create(['role' => $role]);
         }
     }
 }
