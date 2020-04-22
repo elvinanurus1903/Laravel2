@@ -21,36 +21,39 @@
         <div class="col-lg-4 col-md-6 col-12 order-lg-1 min-vh-100 order-2 bg-white">
           <div class="p-4 m-3">
             <h4 class="text-dark font-weight-normal">Simple Inventory <span class="font-weight-bold"></span></h4>
+                @if(Session::has('error'))
+        <b class="text-danger">{{ Session::get('error')}}</b>
+         @endif
             <p class="text-muted">Silahkan login untuk mengakses halaman admin panel.</p>
-            <form method="POST" action="{{ url('login') }}">
+            <form method="POST" action="{{ URL::action('UserController@register') }}">
               @csrf
-              <div class="form-group">
-                <label for="email">Email</label>
-                <input id="email" type="email" class="form-control" name="email"  required autofocus>
-                @if( $errors->has('email'))
-                  <span>
-                      <strong>{{ $errors->first('email') }}</strong>
-                  </span>
-                @endif
-              </div>
+               <div class="form-group">
+            <label>Nama</label>
+             <input type="text" name="name" class="form-control input-lg" />
+            </div>
 
+               <div class="form-group">
+            <label>Email</label>
+             <input type="text" name="email" class="form-control input-lg" />
+            </div>
               <div class="form-group">
-                <div class="d-block">
-                  <label for="password" class="control-label">Password</label>
-                </div>
-                <input id="password" type="password" class="form-control" name="password" tabindex="2" required>
-                <div class="invalid-feedback">
-                  please fill in your password
-                </div>
-              </div>
-
+            <label>Password</label>
+             <input type="text" name="password" class="form-control input-lg" />
+            </div>
+              <div class="form-group">
+               <select class="form-control" id="role" name="role">
+                <option value="" hidden> Role </option>
+                <option value="admin">Admin</option>
+                <option value="staff">Staff</option>
+            </select>
+          </div>
               <div class="form-group text-right">
                 <button type="submit" class="btn btn-primary btn-lg btn-icon icon-right" tabindex="4">
-                  Masuk
+                  Daftar
                 </button>
               </div>
             </form>
-            <a href="{{ URL::action('UserController@registerblade') }}"> Daftar Akun Baru</a>
+<a href="{{ URL::action('UserController@loginblade') }}"> Login</a>
             <div class="text-center mt-5 text-small">
               Copyright &copy; {{ date('Y') }}
             </div>

@@ -56,7 +56,7 @@ class BarangController extends Controller
             'total'    =>  'required|numeric|min:1',
             'broken'     =>  'required|numeric|min:1',
             'created_by'     =>  'required|numeric|min:1',
-            'updated_by'    =>  'required|numeric|max:6',
+            'updated_by'    =>  'required|numeric|min:1',
             'image'         =>  'required|image|min:2480'
         ]);
 
@@ -120,7 +120,7 @@ class BarangController extends Controller
             'total'    =>  'required|numeric|min:1',
             'broken'     =>  'required|numeric|min:1',
             'created_by'     =>  'required|numeric|min:1',
-            'updated_by'    =>  'required|numeric|max:6',
+            'updated_by'    =>  'required|numeric|min:1',
             ]);
 
 
