@@ -15,6 +15,17 @@
               </button>
           </a>
           </div>
+          <div class="card-body">
+            @if ($errors->any())
+            <div class="alert alert-danger">
+              <ul>
+                @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+                @endforeach
+              </ul>
+            </div>
+            @endif
+          </div>
            <div class="card-body">
   <form method="post" action="{{ route('barang.store') }}" enctype="multipart/form-data">
        @csrf
@@ -39,6 +50,11 @@
             <div class="form-group">
             <label>Rusak</label>
              <input type="text" name="broken" class="form-control input-lg" />
+            </div>
+             <div class="form-group">
+              <label>Gambar Barang</label>
+              <br>
+               <input type="file" name="image" />
             </div>
              <div class="form-group">
             <label>Dibuat Oleh</label>

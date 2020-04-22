@@ -42,8 +42,17 @@ class JurusanController extends Controller
      */
     public function store(Request $request)
     {
-         Jurusan::create(['name' => $request->name,
-                'fakultas_id' => $request->fakultas_id]);
+        $validateData = $request->validate([
+            'name'    =>  'required|unique:jurusan|max:150',
+            'fakultas_id'     =>  'required|numeric|min:1'
+        ]);
+        $form_data = array(
+            'name'       =>   $request->name,
+            'jfakultas_id'        =>   $request->fakultas_id,
+
+        );
+
+        Jurusan::create($form_data);
 
         return redirect()->route('jurusan.index');
     }
@@ -82,10 +91,16 @@ class JurusanController extends Controller
      */
     public function update(Request $request, $id)
     {
-           Jurusan::whereId($id)->update(['name' => $request->name,
-            'fakultas_id' => $request->fakultas_id
-       ]);
 
+         $request->validate([
+                 'name'     =>  'required|max:150',
+                 'fakultas_id' => 'required'
+            ]);
+
+       $data = Jurusan::find($id);
+       $data->name = $request->input('name');
+       $data->fakultas_id = $request->input('fakultas_id');
+       $data->save();
          return redirect()->route('jurusan.index');
     }
 

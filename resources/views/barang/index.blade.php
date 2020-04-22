@@ -47,6 +47,7 @@
               <thead>
                 <tr>
                   <th scope="col">ID</th>
+                  <th scope="col">Gambar</th>
                   <th scope="col">Barang</th>
                   <th scope="col">Ruangan</th>
                   <th scope="col">Total</th>
@@ -60,6 +61,7 @@
                @forelse($data as $barang)
                 <tr>
                   <td>{{ $barang->id_barang }}</td>
+                  <td><img src="{{ URL::to('/') }}/images/{{ $barang->image }}" class="img-thumbnail" width="50" /></td>
                   <td>{{ $barang->nama_barang }}</td>
                   <td>{{ $barang->ruangan->nama_ruangan }}</td>
                   <td>{{ $barang->total }}</td>

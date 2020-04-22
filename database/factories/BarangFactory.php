@@ -13,7 +13,8 @@ $factory->define(Barang::class, function (Faker $faker) {
         'broken' => $faker->numberBetween(30,100),
         'ruangan_id' => $faker->numberBetween(1,10),
         'created_by' => $faker->numberBetween(1,10),
-        'updated_by' => $faker->numberBetween(1,10)
+        'updated_by' => $faker->numberBetween(1,10),
+       'image' => 'avatar.jpg'
     ];
 });
 

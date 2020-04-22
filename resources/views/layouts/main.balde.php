@@ -27,6 +27,8 @@
 	<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.8.0/build/cssreset/cssreset-min.css">
 	<link rel="stylesheet" type="text/css" href="{{ asset('css/typegrid.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('css/style.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('css2/material-dashboard.css?v=2.1.2')}}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('demo/demo.css')}}">
 
 
 		

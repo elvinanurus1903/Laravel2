@@ -46,12 +46,36 @@ class BarangController extends Controller
      */
     public function store(Request $request)
     {
-         Barang::create(['nama_barang' => $request->nama_barang,
-                'ruangan_id' => $request->ruangan_id,
-                'total' => $request->total,
-                'broken' => $request->broken,
-                'created_by' => $request->created_by,
-                'updated_by' => $request->updated_by,]);
+
+        
+
+
+        $validateData = $request->validate([
+            'nama_barang'    =>  'required|unique:barang|max:50',
+            'ruangan_id'     =>  'required|numeric|min:1',
+            'total'    =>  'required|numeric|min:1',
+            'broken'     =>  'required|numeric|min:1',
+            'created_by'     =>  'required|numeric|min:1',
+            'updated_by'    =>  'required|numeric|max:6',
+            'image'         =>  'required|image|min:2480'
+        ]);
+
+        $image = $request->file('image');
+
+        $new_name = rand() . '.' . $image->getClientOriginalExtension();
+        $image->move(public_path('images'), $new_name);
+
+        $form_data = array(
+            'nama_barang'       =>   $request->nama_barang,
+            'ruangan_id'        =>   $request->ruangan_id,
+            'total'       =>   $request->total,
+            'broken'        =>   $request->broken,
+            'created_by'        =>   $request->created_by,
+            'updated_by'        =>   $request->updated_by,
+            'image'            =>   $new_name
+        );
+
+        Barang::create($form_data);
 
         return redirect()->route('barang.index');
     }
@@ -89,16 +113,16 @@ class BarangController extends Controller
      * @return \Illuminate\Http\Response
      */
    public function update(Request $request, $id_barang)
-    {
-           
+    { 
           $request->validate([
-                 'nama_barang'     =>  'required',
-                 'ruangan_id'     =>  'required',
-                 'total'     =>  'required',
-                 'broken'     =>  'required',
-                 'created_by'     =>  'required',
-                 'updated_by'     =>  'required',
+            'nama_barang'    =>  'required|max:50',
+            'ruangan_id'     =>  'required|numeric|min:1',
+            'total'    =>  'required|numeric|min:1',
+            'broken'     =>  'required|numeric|min:1',
+            'created_by'     =>  'required|numeric|min:1',
+            'updated_by'    =>  'required|numeric|max:6',
             ]);
+
 
        $barang = Barang::find($id_barang);
        $barang->nama_barang = $request->input('nama_barang');
@@ -108,6 +132,13 @@ class BarangController extends Controller
         $barang->created_by = $request->input('created_by');
        $barang->updated_by = $request->input('updated_by');
        $barang->save();
+
+       if ($request->hasFile('image')) {
+            $request->file('image')->move('images/',$request->file('image')->getClientOriginalName());
+            $barang->image = $request->file('image')->getClientOriginalName();
+        }
+
+        $barang->save();
        return redirect()->route('barang.index');
     }
     /**

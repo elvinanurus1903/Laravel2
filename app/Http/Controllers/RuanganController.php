@@ -42,8 +42,18 @@ class RuanganController extends Controller
      */
     public function store(Request $request)
     {
-         Ruangan::create(['nama_ruangan' => $request->nama_ruangan,
-                'jurusan_id' => $request->jurusan_id]);
+
+            $validateData = $request->validate([
+            'nama_ruangan'    =>  'required|unique:ruangan|max:150',
+            'jurusan_id'     =>  'required|numeric|min:1'
+        ]);
+        $form_data = array(
+            'nama_ruangan'       =>   $request->nama_ruangan,
+            'jurusan_id'        =>   $request->jurusan_id,
+
+        );
+
+        Ruangan::create($form_data);
 
         return redirect()->route('ruangan.index');
     }
@@ -83,7 +93,7 @@ class RuanganController extends Controller
     {
            
           $request->validate([
-                 'nama_ruangan'     =>  'required',
+                 'nama_ruangan'     =>  'required|max:50',
                  'jurusan_id'     =>  'required'
             ]);
 

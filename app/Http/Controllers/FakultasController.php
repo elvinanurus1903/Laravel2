@@ -41,7 +41,15 @@ class FakultasController extends Controller
      */
     public function store(Request $request)
     {
-        Fakultas::create(['nama_fakultas' => $request->nama_fakultas]);
+
+        $validateData = $request->validate([
+            'nama_fakultas'    =>  'required|unique:fakultas|max:150'
+        ]);
+        $form_data = array(
+            'nama_fakultas'       =>   $request->nama_fakultas,
+        );
+
+        Fakultas::create($form_data);
 
         return redirect()->route('fakultas.index');
     }
@@ -81,7 +89,7 @@ class FakultasController extends Controller
     public function update(Request $request, $id_fakultas)
     {
           $request->validate([
-                 'nama_fakultas'     =>  'required'
+                 'nama_fakultas'     =>  'required|max:50'
             ]);
 
        $data = Fakultas::find($id_fakultas);
