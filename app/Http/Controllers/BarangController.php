@@ -54,10 +54,10 @@ class BarangController extends Controller
             'nama_barang'    =>  'required|unique:barang|max:50',
             'ruangan_id'     =>  'required|numeric|min:1',
             'total'    =>  'required|numeric|min:1',
-            'broken'     =>  'required|numeric|min:1',
+            'broken'     =>  'required|numeric',
             'created_by'     =>  'required|numeric|min:1',
             'updated_by'    =>  'required|numeric|min:1',
-            'image'         =>  'required|image|min:2480'
+            'image'         =>  'required|image|mimes:jpeg,png,jpg,gif,svg|max:2480'
         ]);
 
         $image = $request->file('image');
