@@ -15,9 +15,13 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 Route::get('signout', ['as' => 'auth.signout', 'uses' => 'Auth\loginController@signout']);
 Route::post('register', 'UserController@register');
-Route::group(['middleware' => 'auth'], function(){
-	Route::group(['middleware' => 'admin.only'], function(){
+Route::get('/loginblade', 'UserController@loginblade');
+Route::get('/registerblade', 'UserController@registerblade');
+Route::get('/sendemail', 'EmailController@send');
 
+Route::group(['middleware' => 'auth'], function(){
+
+Route::group(['middleware' => 'admin.only'], function(){
 //Untuk Fakultas
 Route::get('fakultas', ['as' => 'fakultas.index', 'uses' => 'FakultasController@index']);
 Route::get('fakultas/create', ['as' => 'fakultas.create', 'uses' => 'FakultasController@create']);
@@ -64,5 +68,4 @@ Route::get('dashboard', function () {
 Route::get('/', function () {
     return view('auth.login');
 });
-Route::get('/loginblade', 'UserController@loginblade');
-Route::get('/registerblade', 'UserController@registerblade');
+
