@@ -9,6 +9,11 @@
 
   <div class="section-body">
     <div class="col-12 col-md-12 col-lg-12">
+       @if($message = Session::get('success'))
+          <div class="alert alert-success">
+            <p> {{ $message }} </p>
+          </div>
+        @endif
         <div class="card">
           <div class="card-header">
             <form method="GET" class="form-inline">
@@ -70,8 +75,9 @@
                   <td>{{ $barang->updated_created->name }}</td>
                   <td>
                     <a href="{{ route('barang.edit', ['id_barang' => $barang->id_barang]) }}">
-              <button type="button" class="btn btn-sm btn-warning">Edit</button> |
+              <button type="button" class="btn btn-sm btn-warning">Edit</button> 
               @if(auth()->user()->role == 'admin')
+              |
                <a href="{{ route('barang.delete', ['id_barang' => $barang->id_barang]) }}"
                     onclick="return confirm('Delete data?');" 
                     >

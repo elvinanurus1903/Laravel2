@@ -29,6 +29,7 @@ Route::post('fakultas/store', ['as' => 'fakultas.store', 'uses' => 'FakultasCont
 Route::get('fakultas/edit/{id_fakultas}', ['as' => 'fakultas.edit', 'uses' => 'FakultasController@edit']);
 Route::put('fakultas/update/{id_fakultas}', ['as' => 'fakultas.update', 'uses' => 'FakultasController@update']);
 Route::get('fakultas/delete/{id_fakultas}', ['as' => 'fakultas.delete', 'uses' => 'FakultasController@delete']);
+Route::post('cetak/import', 'CetakController@import');
 
 //Untuk Jurusan
 Route::get('jurusan', ['as' => 'jurusan.index', 'uses' => 'JurusanController@index']);

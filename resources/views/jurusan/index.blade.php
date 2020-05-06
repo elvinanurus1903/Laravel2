@@ -9,6 +9,11 @@
 
   <div class="section-body">
     <div class="col-12 col-md-12 col-lg-12">
+       @if($message = Session::get('success'))
+          <div class="alert alert-success">
+            <p> {{ $message }} </p>
+          </div>
+        @endif
         <div class="card">
           <div class="card-header">
             <form method="GET" class="form-inline">

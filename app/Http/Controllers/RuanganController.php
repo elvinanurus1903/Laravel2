@@ -55,7 +55,7 @@ class RuanganController extends Controller
 
         Ruangan::create($form_data);
 
-        return redirect()->route('ruangan.index');
+        return redirect()->route('ruangan.index')->with('success', 'Data Berhasil Ditambahkan.');
     }
 
     /**
@@ -101,7 +101,7 @@ class RuanganController extends Controller
        $ruangan->nama_ruangan = $request->input('nama_ruangan');
        $ruangan->jurusan_id = $request->input('jurusan_id');
        $ruangan->save();
-       return redirect()->route('ruangan.index');
+       return redirect()->route('ruangan.index')->with('success', 'Data Berhasil Diubah.');
     }
 
     /**
@@ -115,6 +115,6 @@ class RuanganController extends Controller
         $data = Ruangan::findOrFail($id_ruangan);
         $data->delete();
 
-        return redirect()->route('ruangan.index');
+        return redirect()->route('ruangan.index')->with('success', 'Data Berhasil Dihapus.');
     }
 }

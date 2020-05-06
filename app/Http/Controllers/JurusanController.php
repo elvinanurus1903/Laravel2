@@ -48,13 +48,13 @@ class JurusanController extends Controller
         ]);
         $form_data = array(
             'name'       =>   $request->name,
-            'jfakultas_id'        =>   $request->fakultas_id,
+            'fakultas_id'        =>   $request->fakultas_id,
 
         );
 
         Jurusan::create($form_data);
 
-        return redirect()->route('jurusan.index');
+        return redirect()->route('jurusan.index')->with('success', 'Data Berhasil Ditambahkan.');
     }
 
     /**
@@ -101,7 +101,7 @@ class JurusanController extends Controller
        $data->name = $request->input('name');
        $data->fakultas_id = $request->input('fakultas_id');
        $data->save();
-         return redirect()->route('jurusan.index');
+         return redirect()->route('jurusan.index')->with('success', 'Data Berhasil Diubah.');
     }
 
     /**
@@ -114,6 +114,6 @@ class JurusanController extends Controller
     {
          Jurusan::whereId($id)->delete();
 
-        return redirect()->route('jurusan.index');
+        return redirect()->route('jurusan.index')->with('success', 'Data Berhasil Dihapus.');
     }
 }

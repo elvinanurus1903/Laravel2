@@ -77,7 +77,7 @@ class BarangController extends Controller
 
         Barang::create($form_data);
 
-        return redirect()->route('barang.index');
+        return redirect()->route('barang.index')->with('success', 'Data Berhasil Ditambahkan.');
     }
 
     /**
@@ -139,7 +139,7 @@ class BarangController extends Controller
         }
 
         $barang->save();
-       return redirect()->route('barang.index');
+       return redirect()->route('barang.index')->with('success', 'Data Berhasil Diubah.');
     }
     /**
      * Remove the specified resource from storage.
@@ -152,6 +152,6 @@ class BarangController extends Controller
         $data = Barang::findOrFail($id_barang);
         $data->delete();
 
-        return redirect()->route('barang.index');
+        return redirect()->route('barang.index')->with('success', 'Data Berhasil Dihapus.');
     }
 }

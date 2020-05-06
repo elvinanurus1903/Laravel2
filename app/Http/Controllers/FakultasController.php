@@ -51,7 +51,7 @@ class FakultasController extends Controller
 
         Fakultas::create($form_data);
 
-        return redirect()->route('fakultas.index');
+        return redirect()->route('fakultas.index')->with('success', 'Data Berhasil Ditambahkan.');
     }
 
     /**
@@ -95,7 +95,7 @@ class FakultasController extends Controller
        $data = Fakultas::find($id_fakultas);
        $data->nama_fakultas = $request->input('nama_fakultas');
        $data->save();
-       return redirect()->route('fakultas.index');
+       return redirect()->route('fakultas.index')->with('success', 'Data Berhasil Diubah.');
     }
     
 
@@ -110,6 +110,6 @@ class FakultasController extends Controller
         $data = Fakultas::findOrFail($id_fakultas);
         $data->delete();
 
-        return redirect()->route('fakultas.index');
+        return redirect()->route('fakultas.index')->with('success', 'Data Berhasil Dihapus.');
     }
 }
